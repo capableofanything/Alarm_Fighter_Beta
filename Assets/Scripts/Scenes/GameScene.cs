@@ -31,7 +31,7 @@ public class GameScene : BaseScene
         base.Init();            //base�� �θ� Ŭ������ �ǹ�
         SetMaxMonsterNum();
         Managers.Game.SetMonsterCount(maxMonsterNum);
-        //SoundBgmPlay();         //BaseScene�� ���
+        SoundBgmPlay();         //BaseScene�� ���
         SpawnMonster();
         SpawnBackGround();
         SpawnNoteBar();

@@ -10,7 +10,7 @@ public class FieldManager
     public RoundField GetField() { return this.roundField; }
     public List<List<FieldInfo>> GetGridArray() { return roundField.GetGridArray(); }
     public FieldInfo GetFieldInfo(int x, int y) { return roundField.GetFieldInfo(x, y); }
-    public GameObject GetGrid(int x, int y) { return roundField.GetGrid(x, y); }
+    public GameObject GetGrid(int x, int y) { return roundField.GetGrid(x, y); }//z value is zero
     public void ChangeGrid(int x, int y, Define.GridState state) { roundField.ChangeGrid(x, y, state); }
     public void ScaleByRatio(GameObject go, int x, int y) { roundField.ScaleByRatio(go, x, y); }
     public int GetHeight() { return roundField.GetHeight(); }

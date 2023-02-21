@@ -47,7 +47,7 @@ public class TimingManager
                 }
             }
         }
-        Debug.Log("Miss");//생성된 Note전부 timingRange에 속하지 않으면 Miss
+        //Debug.Log("Miss");//생성된 Note전부 timingRange에 속하지 않으면 Miss
         return false;
     }
 

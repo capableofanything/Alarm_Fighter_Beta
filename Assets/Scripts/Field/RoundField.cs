@@ -21,8 +21,8 @@ public class RoundField : MonoBehaviour
     }
     public GameObject GetGrid(int x, int y)
     {
-       /* if (x > width || y > height || x < 0 || y < 0)
-        { Debug.Log("RoundField GetGrid out of index"); return null; }*/
+        /* if (x > width || y > height || x < 0 || y < 0)
+         { Debug.Log("RoundField GetGrid out of index"); return null; }*/
         return gridArray[x][y].grid;
     }
     

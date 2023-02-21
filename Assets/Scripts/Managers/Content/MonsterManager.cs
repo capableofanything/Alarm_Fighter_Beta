@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterManager : MonoBehaviour
+public class MonsterManager
 {
 
     private GameObject bossMonster;

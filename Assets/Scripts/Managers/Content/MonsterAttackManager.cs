@@ -60,9 +60,6 @@ public class MonsterAttackManager
         Vector3 targetPos = transform_target.position;
         targetPos.z = myPos.z;
         
-        Debug.Log("mypos: " + myPos);
-        Debug.Log("targetPos: " + targetPos);
-        
         Vector3 vectorToTarget = targetPos - myPos;
         UpdateScale(go,vectorToTarget);
 
@@ -74,7 +71,9 @@ public class MonsterAttackManager
     }
     private Vector3 SetEffect(int x, int y)
     {
-        return Managers.Field.GetGrid(x, y).transform.position;
+        Vector3 vec = Managers.Field.GetGrid(x, y).transform.position;
+        //vec.z = 0;
+        return vec;
     }
     #endregion
     //

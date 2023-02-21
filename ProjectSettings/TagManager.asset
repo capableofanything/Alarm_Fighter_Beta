@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Note2
   - PlayerHP
+  - Lazer_Boom
   layers:
   - Default
   - TransparentFX
