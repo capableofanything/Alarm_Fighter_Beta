@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class BpmManager
 {
-    
-    int bpm = 120;
+
+    int bpm = 96;
     public bool Able;
-    
-    public int BPM {
+
+    public int BPM
+    {
         get { return bpm; }
         private set
-        { 
+        {
             bpm = value;
             Init();
-        } 
+        }
     }
 
     public void Init()
@@ -29,17 +30,16 @@ public class BpmManager
         //Text go = GameObject.Find("BpmValue").GetComponent<Text>();
         //go.text = $"{bpm}";
     }
-    
+
     public float GetAnimSpeed()
     {
         float speed = bpm / 60;
 
         return speed;
     }
-    
+
     public void SetBpm(int n)
     {
         BPM = n;
     }
 }
-

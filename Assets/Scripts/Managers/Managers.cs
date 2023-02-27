@@ -15,6 +15,7 @@ public class Managers : MonoBehaviour       //@Managers(GameObject)¿¡ »ğÀÔµÊ(½ÃÀ
     PlayerManager _player = new PlayerManager();
     MonsterManager _monster = new MonsterManager();
     MonsterAttackManager _monsterAttack = new MonsterAttackManager();
+    CameraBeatManager _cameraBeat = new CameraBeatManager();
     public static BpmManager Bpm { get { return Instance._bpm; } }
     public static FieldManager Field { get { return Instance._field; } }
     public static GameManagerEx Game { get { return Instance._game; } }
@@ -24,6 +25,7 @@ public class Managers : MonoBehaviour       //@Managers(GameObject)¿¡ »ğÀÔµÊ(½ÃÀ
     public static PlayerManager Player { get { return Instance._player; } }
     public static MonsterManager Monster { get { return Instance._monster; } }
     public static MonsterAttackManager MonsterAttack { get { return Instance._monsterAttack; } }
+    public static CameraBeatManager CameraBeat { get { return Instance._cameraBeat; } }
     #endregion
 
     #region Core
@@ -49,7 +51,7 @@ public class Managers : MonoBehaviour       //@Managers(GameObject)¿¡ »ğÀÔµÊ(½ÃÀ
 
     void Update()
     {
-        
+
     }
     static void Init()
     {

@@ -22,8 +22,8 @@ public class GridBaseSpawn : MonoBehaviour
     }
     void Start()
     {
-        //Managers.Timing.BehaveAction -= BitBehave;
-        //Managers.Timing.BehaveAction += BitBehave;
+        Managers.Timing.BehaveAction -= BitBehave;
+        Managers.Timing.BehaveAction += BitBehave;
 
     }
 

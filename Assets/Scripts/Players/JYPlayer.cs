@@ -19,10 +19,10 @@ public class JYPlayer : Character
     }
     void Update()
     {
-        if (isUp && Managers.Timing.CheckTiming()) { mayGo(Define.PlayerMove.Up); isUp = false; }
-        else if (isLeft && Managers.Timing.CheckTiming()) { mayGo(Define.PlayerMove.Left); isLeft = false; }
-        else if (isDown && Managers.Timing.CheckTiming()) { mayGo(Define.PlayerMove.Down); isDown = false; }
-        else if (isRight && Managers.Timing.CheckTiming()) { mayGo(Define.PlayerMove.Right); isRight = false; }
+        if (isUp ) { mayGo(Define.PlayerMove.Up); isUp = false; }
+        else if (isLeft) { mayGo(Define.PlayerMove.Left); isLeft = false; }
+        else if (isDown) { mayGo(Define.PlayerMove.Down); isDown = false; }
+        else if (isRight) { mayGo(Define.PlayerMove.Right); isRight = false; }
 
 
         /*Vector2 checkPoint = Managers.Field.GetGrid(move_X, move_Y).transform.position;

@@ -5,25 +5,38 @@ using UnityEngine;
 
 public class CameraMonster : Character
 {
-    Define.State nextBehavior = Define.State.SPAWN;                     
+    Define.State nextBehavior = Define.State.SPAWN;
 
     [SerializeField] List<GameObject> horizontalMons = new List<GameObject>();      //가로 공격 몬스터용
     [SerializeField] List<GameObject> verticalMons = new List<GameObject>();          //세로 공격 몬스터용
     [SerializeField] List<GameObject> randomMons = new List<GameObject>();         //랜덤 공격 몬스터용
 
+    List<CameraBeatManager.FunctionPointer> callOrderList;
     //public Transform CurrentTransform() { return transform; }//sunho 0218
+
+    //public delegate void FunctionPointer();
+
+    int index = 0;
 
     void Start()
     {
         Managers.Timing.BehaveAction -= BitBehave;      //몬스터의 비트 마다 실행할 BitBehave 구독
         Managers.Timing.BehaveAction += BitBehave;
+
+        callOrderList = Managers.CameraBeat.CreateCallOrderList();
+
+        /*        CallOrderList.Add(Pattern1);
+                CallOrderList.Add(Pattern2);
+                CallOrderList.Add(Pattern2);
+                CallOrderList.Add(Pattern1);
+        */
     }
     //start sunho 0218
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            for(int i=0;i<Managers.Field.GetWidth();i++)
+            for (int i = 0; i < Managers.Field.GetWidth(); i++)
             {
                 Managers.MonsterAttack.LazerAttack(this.transform, i, 1);
             }
@@ -38,15 +51,23 @@ public class CameraMonster : Character
             Managers.MonsterAttack.LazerMoveAttack(this.transform);
 
         }
-        if (Input.GetKeyDown(KeyCode.L)) 
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            Managers.MonsterAttack.LazerAttack(this.transform,5,1);
+            Managers.MonsterAttack.LazerAttack(this.transform, 5, 1);
             Managers.MonsterAttack.LazerAttack(this.transform, 6, 1);
         }
     }
     //end
+
+
     void BitBehave()
     {
+        if (index > callOrderList.Count - 1) // 4 재사용성 없음, 다른 것으로 대체될 수 있음
+            index = 0;
+
+        callOrderList[index]();
+        index++;
+
         switch (nextBehavior)
         {
             case Define.State.SPAWN:
@@ -54,7 +75,7 @@ public class CameraMonster : Character
                 //세로 공격 몬스터 스폰
                 if (Managers.Monster.CurrentVMons.Count < 2) //필드에 2개 이상 만들어지지 않음
                 {
-                    SpawnVerticalMonster( );
+                    SpawnVerticalMonster();
                 }
 
                 //가로 공격 몬스터 스폰
@@ -81,7 +102,7 @@ public class CameraMonster : Character
         }
     }
 
-    private void SpawnVerticalMonster( )        
+    private void SpawnVerticalMonster()
     {
         //randomly spawn one monster in verticalMons List
         //int rand = UnityEngine.Random.Range(0, verticalMons.Count);
@@ -91,7 +112,7 @@ public class CameraMonster : Character
         Managers.Monster.CurrentVMons.Add(go);
     }
 
-    private void SpawnHorizontalMonster( )
+    private void SpawnHorizontalMonster()
     {
         //randomly spawn one monster in horizontalMons List
         //int rand = UnityEngine.Random.Range(0, horizontalMons.Count);
@@ -101,7 +122,7 @@ public class CameraMonster : Character
         Managers.Monster.CurrentHMons.Add(go);
     }
 
-    private void SpawnRandomMonster( )
+    private void SpawnRandomMonster()
     {
         //randomly spawn one monster in randomMons List
         //int rand = UnityEngine.Random.Range(0, randomMons.Count);
@@ -112,7 +133,7 @@ public class CameraMonster : Character
     }
 
 
- 
+
     private void OnTriggerEnter2D(Collider2D collision)                 //Player의 공격으로 인해서 몬스터가 활성화된 grid에 닿을 경우
     {
 

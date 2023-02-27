@@ -1,20 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-
 
 
 public class MonsterAttackManager
 {
     #region CameraAttackPatterns
 
-    public void LazerAttack(Transform transform,int x,int y)//Lazer attack where is in grid(x,y), start  = monster eye, where = (x,y)
+    public async void LazerAttack(Transform transform,int x,int y)//Lazer attack where is in grid(x,y), start  = monster eye, where = (x,y)
     {
-        LazerInit(transform ,x, y);
+        Managers.Field.GetGrid(x,y).GetComponent<Animator>().SetTrigger("GridRed");
+        await Task.Delay(300);
+        LazerInit(transform, x, y);//n second after use
     }
     #region LazerAttack_Private
     private void LazerInit(Transform transform, int x, int y)

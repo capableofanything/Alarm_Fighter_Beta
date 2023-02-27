@@ -34,20 +34,20 @@ public class GameScene : BaseScene
         SoundBgmPlay();         //BaseScene�� ���
         SpawnMonster();
         SpawnBackGround();
-        SpawnNoteBar();
+        //SpawnNoteBar();
         SpawnPlayer();
         SpawnField();
         SpawnMoveButton();
         SpawnTimer();
         SpawnHpBarMiddle();
-        /*
-        Managers.Item.Init();
-        Managers.Resource.Instantiate("Items/ItemBoxes/@GridBaseSpawn");
-        Managers.Menu.Init();
-        */
+
+        //Managers.Item.Init();
+        //Managers.Resource.Instantiate("Items/ItemBoxes/@GridBaseSpawn");
+        //Managers.Menu.Init();
+
     }
 
-   
+
     public void Update()
     {
         Managers.Timing.UpdatePerBit();         //�� ��Ʈ���� ���� �ൿ ����Ʈ
